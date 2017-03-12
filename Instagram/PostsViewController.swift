@@ -7,13 +7,39 @@
 //
 
 import UIKit
+import Parse
 
 class PostsViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var posts: [PFObject]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 240
+        
+        let query = PFQuery(className: "Post")
+        query.order(byDescending: "_created_at")
+        query.includeKey("author")
+        query.limit = 20
+        
+        query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
+            print("Got here!!")
+            if let newposts = posts {
+                // do something with the array of object returned by the call
+                self.posts = newposts
+                self.tableView.reloadData()
+            } else {
+                print(error?.localizedDescription as Any)
+            }
+        }
+        //self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +58,16 @@ class PostsViewController: UIViewController {
     }
     */
 
+}
+
+extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.posts?.count ?? 0
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        cell.post = self.posts?[indexPath.row] ?? nil
+        return cell
+    }
 }

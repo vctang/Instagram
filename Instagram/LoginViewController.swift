@@ -46,9 +46,6 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "LoginSegue", sender: nil)
             } else {
                 print(error?.localizedDescription as String!)
-                /*if error?.code == 202 {
-                    print("Your username is already taken")
-                }*/
             }
         }
     }

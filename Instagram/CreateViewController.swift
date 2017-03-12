@@ -7,13 +7,59 @@
 //
 
 import UIKit
+import Parse
 
-class CreateViewController: UIViewController {
+class CreateViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var postButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func onChooseImage(_ sender: Any) {
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        // Get the image captured by the UIImagePickerController
+        var originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        // Resize image
+        //let size = CGSize(width: originalImage.size.width, height: originalImage.size.height)
+        //originalImage = resize(image: originalImage, newSize: size)
+        postImageView.image = originalImage
+        
+        // Dismiss UIImagePickerController to go back to your original view controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func resize(image: UIImage, newSize: CGSize) -> UIImage {
+        let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
+        resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +67,12 @@ class CreateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onPost(_ sender: Any) {
+        Post.postUserImage(image: postImageView.image, withCaption: self.captionTextView.text) { (success: Bool, error: Error?) in
+            print("Successful post")
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

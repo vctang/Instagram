@@ -16,6 +16,8 @@
 		D06676B11E6FCF3D0005B678 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06676B01E6FCF3D0005B678 /* ProfileViewController.swift */; };
 		D06676B41E6FD2A90005B678 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06676B31E6FD2A90005B678 /* PostsViewController.swift */; };
 		D06676B61E6FD2C00005B678 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06676B51E6FD2C00005B678 /* CreateViewController.swift */; };
+		D0CAE6291E72B59E000073F0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CAE6281E72B59E000073F0 /* Post.swift */; };
+		D0CAE62B1E72B70D000073F0 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CAE62A1E72B70D000073F0 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D06676B01E6FCF3D0005B678 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D06676B31E6FD2A90005B678 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		D06676B51E6FD2C00005B678 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		D0CAE6281E72B59E000073F0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		D0CAE62A1E72B70D000073F0 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 		D066769B1E6FBE420005B678 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				D0CAE6281E72B59E000073F0 /* Post.swift */,
+				D0CAE62A1E72B70D000073F0 /* PostCell.swift */,
 				D06676B21E6FD2950005B678 /* View Controllers */,
 				D066769C1E6FBE420005B678 /* AppDelegate.swift */,
 				D06676A01E6FBE420005B678 /* Main.storyboard */,
@@ -228,9 +234,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0CAE62B1E72B70D000073F0 /* PostCell.swift in Sources */,
 				D06676B61E6FD2C00005B678 /* CreateViewController.swift in Sources */,
 				D06676B41E6FD2A90005B678 /* PostsViewController.swift in Sources */,
 				D06676B11E6FCF3D0005B678 /* ProfileViewController.swift in Sources */,
+				D0CAE6291E72B59E000073F0 /* Post.swift in Sources */,
 				D06676AF1E6FC4480005B678 /* LoginViewController.swift in Sources */,
 				D066769D1E6FBE420005B678 /* AppDelegate.swift in Sources */,
 			);

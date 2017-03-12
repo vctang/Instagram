@@ -36,7 +36,7 @@ class PostsViewController: UIViewController {
                 self.posts = newposts
                 self.tableView.reloadData()
             } else {
-                print(error?.localizedDescription as Any)
+                print("postsVC error: \(error?.localizedDescription)")
             }
         }
         //self.tableView.reloadData()

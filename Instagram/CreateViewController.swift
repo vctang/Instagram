@@ -30,12 +30,12 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // Get the image captured by the UIImagePickerController
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        var originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         //let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Resize image
-        //let size = CGSize(width: originalImage.size.width, height: originalImage.size.height)
-        //originalImage = resize(image: originalImage, newSize: size)
+        let size = CGSize(width: 400, height: 400)
+        originalImage = resize(image: originalImage, newSize: size)
         postImageView.image = originalImage
         
         dismiss(animated: true, completion: nil)

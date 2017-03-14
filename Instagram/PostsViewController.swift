@@ -21,8 +21,8 @@ class PostsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 240
+        //tableView.rowHeight = UITableViewAutomaticDimension
+        //tableView.estimatedRowHeight = 240
         
         let query = PFQuery(className: "Post")
         query.order(byDescending: "_created_at")

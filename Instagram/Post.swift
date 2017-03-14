@@ -32,8 +32,6 @@ class Post: NSObject {
         post["likesCount"] = 0
         post["commentsCount"] = 0
         
-        print(" Posts here")
-        
         // Save object (following function will save the object in Parse asynchronously)
         post.saveInBackground(block: completion)
     }
@@ -50,7 +48,6 @@ class Post: NSObject {
         if let image = image {
             // get image data and check if that is not nil
             if let imageData = UIImagePNGRepresentation(image) {
-                print("Got image")
                 return PFFile(name: "image.png", data: imageData)
             }
         }

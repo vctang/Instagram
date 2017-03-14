@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013.6" y="-625.63718140929541"/>
+            <point key="canvasLocation" x="1014" y="-712"/>
         </scene>
         <!--Posts-->
         <scene sceneID="f6x-qq-tpj">
@@ -236,7 +236,6 @@
                     <tabBarItem key="tabBarItem" title="Create" id="dFU-e7-Icj"/>
                     <connections>
                         <outlet property="captionTextView" destination="CdG-O7-LOu" id="Kzr-J3-Buz"/>
-                        <outlet property="postButton" destination="f3y-7x-azF" id="p8p-C7-tlb"/>
                         <outlet property="postImageView" destination="P2e-8F-JLv" id="cML-Ht-JIC"/>
                     </connections>
                 </viewController>
@@ -300,7 +299,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5CS-Qr-nYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="-624"/>
+            <point key="canvasLocation" x="1836" y="-711"/>
         </scene>
     </scenes>
 </document>

@@ -14,19 +14,17 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     
-    var post: PFObject!
-    
     var postData: PFObject? {
         didSet {
-            print("Post object has now been set!")
-            self.captionLabel.text = post.value(forKey: "caption") as? String
+            //print("Post object has now been set!")
+            self.captionLabel.text = postData?.value(forKey: "caption") as? String
             
-            if let postImage = post.value(forKey: "media") as? PFFile {
+            if let postImage = postData?.value(forKey: "media") as? PFFile {
                 postImage.getDataInBackground(block: { (image: Data?, error: Error?) in
                     if error == nil {
                         self.postImageView.image = UIImage.init(data: image!)
                     } else {
-                        print(error?.localizedDescription)
+                        print(error?.localizedDescription as Any)
                     }
                 })
             }

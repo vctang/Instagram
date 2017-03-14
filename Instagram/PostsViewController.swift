@@ -13,7 +13,7 @@ class PostsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var posts: [PFObject]!
+    var posts : [PFObject]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,9 @@ class PostsViewController: UIViewController {
         
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
             print("Got here!!")
-            if let newposts = posts {
+            if let posts = posts {
                 // do something with the array of object returned by the call
-                self.posts = newposts
+                self.posts = posts
                 self.tableView.reloadData()
             } else {
                 print("postsVC error: \(error?.localizedDescription)")
@@ -67,7 +67,7 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.post = self.posts?[indexPath.row] ?? nil
+        cell.postData = self.posts[indexPath.row]
         return cell
     }
 }

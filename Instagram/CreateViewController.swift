@@ -13,7 +13,6 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
-    @IBOutlet weak var postButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +30,14 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // Get the image captured by the UIImagePickerController
-        var originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Resize image
         //let size = CGSize(width: originalImage.size.width, height: originalImage.size.height)
         //originalImage = resize(image: originalImage, newSize: size)
         postImageView.image = originalImage
         
-        // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
     
@@ -70,6 +69,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBAction func onPost(_ sender: Any) {
         Post.postUserImage(image: postImageView.image, withCaption: self.captionTextView.text) { (success: Bool, error: Error?) in
             print("Successful post")
+            self.tabBarController!.selectedIndex = 0
         }
         
     }

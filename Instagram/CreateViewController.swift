@@ -34,7 +34,7 @@ class CreateViewController: UIViewController, UIImagePickerControllerDelegate, U
         //let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         
         // Resize image
-        let size = CGSize(width: 400, height: 400)
+        let size = CGSize(width: 278, height: 278)
         originalImage = resize(image: originalImage, newSize: size)
         postImageView.image = originalImage
         

@@ -39,7 +39,7 @@ class PostsViewController: UIViewController {
                 print("postsVC error: \(error?.localizedDescription)")
             }
         }
-        //self.tableView.reloadData()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
